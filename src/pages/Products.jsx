@@ -1,9 +1,5 @@
-function Products() {
-  return (
-    <>
-      <h1>Products</h1>
-    </>
-  );
-}
+const Products = () => {
+  return <div>Products</div>;
+};
 
 export default Products;

@@ -1,0 +1,96 @@
+/** @type {import('tailwindcss').Config} \*/
+module.exports = {
+content: ["./src/**/\*.{js,jsx,ts,tsx}"],
+theme: {
+extend: {
+colors: {
+text: "#151875",
+whitesmoke: {
+"100": "#f7f7f7",
+"200": "#f5f6f8",
+"300": "#f1f1f1",
+},
+white: "#fff",
+"bg-shade": "#eeeffb",
+crimson: "#fb2448",
+pink: "#fb2e86",
+slategray: "#72718f",
+lavender: {
+"100": "#f2f0ff",
+"200": "#f1f0ff",
+"300": "#e7e4f8",
+"400": "#e7e6ef",
+},
+ghostwhite: "#f6f7fb",
+limegreen: "#08d15f",
+mediumpurple: "#9877e7",
+midnightblue: {
+"100": "#1a0b5b",
+"200": "#0d0e43",
+"300": "rgba(26, 11, 91, 0.33)",
+"400": "rgba(26, 11, 91, 0.3)",
+"500": "rgba(21, 24, 117, 0.3)",
+},
+lavenderblush: {
+"100": "#fff6fb",
+"200": "#fcecf1",
+},
+lightsteelblue: {
+"100": "#b8b8dc",
+"200": "#b7bacb",
+"300": "#acabc3",
+},
+darkblue: "#00009d",
+deeppink: {
+"100": "#f52b70",
+"200": "#f701a8",
+},
+aquamarine: {
+"100": "#2bf5cc",
+"200": "#05e6b7",
+},
+wheat: "#ffeac1",
+mediumblue: {
+"100": "#2b2bf5",
+"200": "#2f1ac4",
+},
+violet: "#7e33e0",
+hotpink: "#fb4997",
+pink1: "#febad7",
+darkgray: "#9da0ae",
+"sub-text-color": "#8a8fb9",
+black: "#000",
+},
+spacing: {},
+fontFamily: {
+"price-cut": "'Josefin Sans'",
+"paragraph-text": "Lato",
+roboto: "Roboto",
+},
+borderRadius: {
+"8xs": "5px",
+"3xs": "10px",
+"31xl": "50px",
+"10xs": "3px",
+},
+},
+fontSize: {
+xs: "12px",
+base: "16px",
+sm: "14px",
+lg: "18px",
+xl: "20px",
+mid: "17px",
+"2xl": "21px",
+"16xl": "35px",
+"3xl": "22px",
+"15xl": "34px",
+"23xl": "42px",
+"7xl": "26px",
+inherit: "inherit",
+},
+},
+corePlugins: {
+preflight: false,
+},
+};
