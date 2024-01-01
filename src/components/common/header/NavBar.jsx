@@ -4,16 +4,16 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 const NavBar = () => {
   return (
     <div className="flex justify-center">
-      <nav className="flex justify-between py-6 w-[1177px]">
-        <div className="items-center  flex gap-24">
-          <h1 className=" font-josefin font-bold text-4xl">Hekto</h1>
-          <ul className="font-lato flex gap-8 text-customBlue">
+      <nav className="flex w-[1177px] justify-between py-6">
+        <div className="flex  items-center gap-24">
+          <h1 className=" font-josefin text-4xl font-bold">Hekto</h1>
+          <ul className="flex gap-8 font-lato text-customBlue">
             <li>
               <a className="text-customPink hover:text-customBlue" href="/home">
                 Home
               </a>
               <select
-                className="bg-transparent hover:text-customBlue text-customPink"
+                className="bg-transparent text-customPink hover:text-customBlue"
                 name=""
                 id=""
               >
@@ -40,12 +40,12 @@ const NavBar = () => {
         <form className="flex items-center">
           <input
             type="text"
-            className="border-2 focus:outline-none focus:border-customPink h-full"
+            className="h-full border-2 focus:border-customPink focus:outline-none"
             style={{ width: "266px" }}
           />
           <button
             type="submit"
-            className="bg-customPink text-white h-full focus:outline-none hover:bg-customBlue"
+            className="h-full bg-customPink text-white hover:bg-customBlue focus:outline-none"
             style={{ width: "51px" }}
           >
             <FontAwesomeIcon icon={faSearch} />

@@ -1,9 +1,20 @@
+import { IoMailOutline } from "react-icons/io5";
+import { TbPhoneCall } from "react-icons/tb";
+import { RiUserLine } from "react-icons/ri";
+import { FaRegHeart } from "react-icons/fa";
+
 const HeadingBar = () => {
   return (
-    <div className="items-center flex gap-96 justify-center h-11 left-0 top-0 bg-violet-600 font-josefin text-zinc-100">
+    <div className="flex h-11 w-full items-center justify-center gap-[445px] bg-[#7E33E0] font-josefin text-zinc-100">
       <div className="flex gap-10 ">
-        <span>mhhasanul@gmail.com</span>
-        <span>(12345)67890</span>
+        <span className="flex items-center gap-3">
+          <IoMailOutline />
+          mhhasanul@gmail.com
+        </span>
+        <span className="flex items-center gap-3">
+          <TbPhoneCall />
+          (12345)67890
+        </span>
       </div>
       <div className="flex gap-10">
         <div>
@@ -34,8 +45,14 @@ const HeadingBar = () => {
             </option>
           </select>
         </div>
-        <div>Login</div>
-        <div>Wishlist</div>
+        <div className="flex items-center">
+          Login
+          <RiUserLine />
+        </div>
+        <div className="flex items-center gap-1">
+          Wishlist
+          <FaRegHeart />
+        </div>
       </div>
     </div>
   );
