@@ -2,12 +2,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
   .btn {
-    @apply bg-customPink text-white py-2 px-4 rounded hover:bg-customBlue mb-4;
+    @apply mb-4 rounded bg-customPink px-4 py-2 text-white hover:bg-customBlue;
+  }
+  .container {
+    @apply mx-auto max-w-[1177px];
   }
 }
+
+/* * {
+  background-color: rgb(255, 0, 0, 0.08);
+}
+ */
