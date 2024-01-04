@@ -2,6 +2,7 @@ import { IoMailOutline } from "react-icons/io5";
 import { TbPhoneCall } from "react-icons/tb";
 import { RiUserLine } from "react-icons/ri";
 import { FaRegHeart } from "react-icons/fa";
+import { LuShoppingCart } from "react-icons/lu";
 
 const HeadingBar = () => {
   return (
@@ -53,6 +54,9 @@ const HeadingBar = () => {
           <div className="flex items-center gap-1">
             Wishlist
             <FaRegHeart />
+          </div>
+          <div className="flex items-center gap-1">
+            <LuShoppingCart />
           </div>
         </div>
       </div>

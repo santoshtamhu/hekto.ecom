@@ -16,6 +16,9 @@
   .container {
     @apply mx-auto max-w-[1177px];
   }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
 }
 
 /* * {

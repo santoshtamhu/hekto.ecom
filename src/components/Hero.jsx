@@ -32,34 +32,35 @@ const Hero = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <div>
       <Slider {...settings}>
         {bannerData.map((el) => {
           return (
-            <>
+            <div>
               <div
-                className="h-[764px] w-full bg-center bg-no-repeat"
+                className="h-64 w-full bg-center bg-no-repeat md:h-96 lg:h-[464px] 2xl:h-[764px]"
                 style={{
                   backgroundImage: `url('${el.src}')`,
                 }}
               >
-                <div className="container flex h-full  flex-col justify-center">
-                  <p className="pb-4 font-lato font-bold text-customPink">
+                <div className="container flex h-full flex-col items-center justify-center p-3 text-center lg:max-xl:gap-4 2xl:items-start 2xl:text-left">
+                  <p className="pb-1 pt-4 font-lato text-[12px] font-bold text-customPink lg:pb-2 lg:text-[16px]">
                     {el.subtitle}
                   </p>
-                  <h2 className="w-[660px] pb-4 font-josefin text-[53px] font-bold leading-tight tracking-wide">
+                  <h2 className="pb-1 font-josefin text-2xl font-bold leading-tight tracking-wide md:w-[450px] md:text-4xl lg:w-[660px] lg:pb-2 lg:max-xl:text-5xl xl:w-[660px] xl:text-[53px] xl:leading-tight">
                     {el.heroText}
                   </h2>
-                  <p className="w-[560px] font-lato font-bold text-[#8A8FB9]">
+                  <p className="w-64 font-lato text-[10px] font-bold text-[#8A8FB9] md:w-96 md:text-[16px] xl:w-[460px]">
                     {el.description}
                   </p>
-                  <button className="btn mt-7 h-[50px] w-[163px]">
+                  <button className="btn mt-3 w-24 text-[10px] md:w-28 lg:mt-5 lg:text-lg xl:h-[50px] xl:w-[163px]">
                     Shop Now
                   </button>
                 </div>
               </div>
-            </>
+            </div>
           );
         })}
       </Slider>
