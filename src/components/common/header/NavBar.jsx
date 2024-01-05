@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -13,16 +14,18 @@ const NavBar = () => {
     <div className="container flex justify-center">
       <nav className="flex w-full justify-between px-3 md:py-6 lg:px-8 xl:px-0 ">
         <div className="flex items-center md:gap-16">
-          <h1 className="pt-2 font-josefin text-4xl font-bold">Hekto</h1>
+          <Link to="/" className="pt-2 font-josefin text-4xl font-bold">
+            Hekto
+          </Link>
           <ul
             className={`font-lato text-customBlue md:flex md:gap-8 ${
               isMenuOpen ? "flex" : "hidden"
             }`}
           >
             <li>
-              <a className="text-customPink hover:text-customBlue" href="/home">
+              <Link className="text-customPink hover:text-customBlue" to="/">
                 Home
-              </a>
+              </Link>
               <select
                 className="bg-transparent text-customPink hover:text-customBlue"
                 name=""
@@ -32,19 +35,19 @@ const NavBar = () => {
               </select>
             </li>
             <li>
-              <a href="/pages">Pages</a>
+              <Link to="/pages">Pages</Link>
             </li>
             <li>
-              <a href="/products">Products</a>
+              <Link to="/products">Products</Link>
             </li>
             <li>
-              <a href="/blog">Blog</a>
+              <Link to="/blog">Blog</Link>
             </li>
             <li>
-              <a href="/shop">Shop</a>
+              <Link to="/shop">Shop</Link>
             </li>
             <li>
-              <a href="/contact">Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </div>

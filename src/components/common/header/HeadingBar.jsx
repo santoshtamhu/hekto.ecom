@@ -3,6 +3,7 @@ import { TbPhoneCall } from "react-icons/tb";
 import { RiUserLine } from "react-icons/ri";
 import { FaRegHeart } from "react-icons/fa";
 import { LuShoppingCart } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 const HeadingBar = () => {
   return (
@@ -47,10 +48,10 @@ const HeadingBar = () => {
               </option>
             </select>
           </div>
-          <div className="flex items-center">
+          <Link to="/login" className="flex items-center">
             Login
             <RiUserLine />
-          </div>
+          </Link>
           <div className="flex items-center gap-1">
             Wishlist
             <FaRegHeart />

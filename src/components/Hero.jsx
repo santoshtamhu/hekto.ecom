@@ -31,6 +31,7 @@ const Hero = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
   };
 
   return (
@@ -55,7 +56,7 @@ const Hero = () => {
                   <p className="w-64 font-lato text-[10px] font-bold text-[#8A8FB9] md:w-96 md:text-[16px] xl:w-[460px]">
                     {el.description}
                   </p>
-                  <button className="btn mt-3 w-24 text-[10px] md:w-28 lg:mt-5 lg:text-lg xl:h-[50px] xl:w-[163px]">
+                  <button className="btn mt-3 w-24 text-[10px] md:w-28 lg:mt-5 lg:text-[12px] xl:h-[50px] xl:w-[163px] xl:text-lg">
                     Shop Now
                   </button>
                 </div>
