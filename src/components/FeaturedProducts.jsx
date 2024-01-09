@@ -29,13 +29,13 @@ let chairs = [
 const FeaturedProducts = () => {
   return (
     <ul className="container mt-20 grid place-items-center gap-16 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-      {chairs.map((el) => {
+      {chairs.map((product) => {
         return (
           <ProductCard
-            name={el.name}
-            price={el.price}
-            thumbnail={el.thumbnail}
-            code={el.code}
+            name={product.name}
+            price={product.price}
+            thumbnail={product.thumbnail}
+            code={product.code}
           />
         );
       })}
