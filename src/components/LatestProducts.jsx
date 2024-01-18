@@ -41,13 +41,9 @@ export const LatestProducts = () => {
         Latest Products
       </h1>
       <ul className="container mt-10 grid place-items-center gap-16 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-        {products.map((product) => {
+        {products.map((el) => {
           return (
-            <ProductCard
-              name={product.name}
-              price={product.price}
-              thumbnail={product.image}
-            />
+            <ProductCard name={el.name} price={el.price} thumbnail={el.image} />
           );
         })}
       </ul>

@@ -1,18 +1,15 @@
-import { Link } from "react-router-dom";
+import { Breadcrumb } from "../components/common/Breadcrumb";
 
 const Login = () => {
   return (
     <>
-      <div className="flex h-28 items-center bg-[#F6F5FF] md:h-36 xl:h-72">
-        <div className="pl-4 sm:container">
-          <p className="font-josefin text-3xl font-bold md:text-4xl">Log In</p>
-          <div className="flex gap-4 font-lato text-[10px] md:text-base">
-            <Link to="/">Home</Link>
-            <Link to="/pages">Pages</Link>
-            <Link to="/myaccount">My Account</Link>
-          </div>
-        </div>
-      </div>
+      <Breadcrumb
+        title="Login"
+        links={[
+          { title: "home", url: "/" },
+          { title: "login", url: "#" },
+        ]}
+      />
       <div className="flex justify-center">
         <div className="mb-96 mt-9 grid h-96 w-80 place-content-center font-lato shadow-2xl  lg:mt-28 lg:h-[474px] lg:w-[544px]">
           <div className=" text-center">
