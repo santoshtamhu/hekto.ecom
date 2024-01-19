@@ -8,6 +8,9 @@ import Blog from "./pages/Blog";
 import Shop from "./pages/Shop";
 import Login from "./pages/Login";
 import { SingleProductPage } from "./pages/SingleProductPage";
+import { Signup } from "./pages/Signup";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -16,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:slug" element={<SingleProductPage />} />
         <Route path="/pages" element={<Pages />} />
@@ -23,6 +27,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/shop" element={<Shop />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

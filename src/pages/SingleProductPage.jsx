@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Breadcrumb } from "../components/common/Breadcrumb";
 import axios from "axios";
-import { useSearchParams, useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FaRegHeart, FaArrowRight } from "react-icons/fa";
 
 export const SingleProductPage = () => {
   const [product, setProduct] = useState({});
   const { slug } = useParams();
-  console.log(slug);
 
   useEffect(() => {
     axios
