@@ -4,7 +4,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import { HiMagnifyingGlassPlus } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
-export const ProductCard = (product) => {
+export const ProductCard = ({ product }) => {
   return (
     <li className="group relative flex h-[361px] w-[270px] justify-center pr-0 shadow-lg">
       <Link to={`/products/${product._id}`}>
@@ -21,7 +21,7 @@ export const ProductCard = (product) => {
             </div>
           </div>
           <div className="flex h-[236px] w-[270px] justify-center bg-customGreyBackground group-hover:bg-customGreyHoverBackground">
-            <img className="h-full" src={product.thumbnail} alt="" />
+            <img className="h-full" src={product.image} alt="" />
             <div className="group-hover:flex-center absolute bottom-[138px] left-auto right-auto hidden h-7 w-24 cursor-pointer bg-green-500">
               <p className="pt-1 font-josefin text-[12px] text-white">
                 View Details
