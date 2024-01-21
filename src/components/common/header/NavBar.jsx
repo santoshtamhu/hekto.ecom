@@ -11,8 +11,8 @@ const NavBar = () => {
   };
 
   return (
-    <div className="container flex justify-center">
-      <nav className="flex w-full justify-between px-3 md:py-6 lg:px-8 xl:px-0 ">
+    <div className=" flex w-full justify-center bg-white">
+      <nav className="container flex w-full justify-between px-3 py-2 lg:px-8 xl:px-0 ">
         <div className="flex items-center md:gap-16">
           <Link to="/" className="pt-2 font-josefin text-4xl font-bold">
             Hekto
@@ -54,11 +54,11 @@ const NavBar = () => {
         <form className="hidden md:flex md:items-center">
           <input
             type="text"
-            className="h-full w-[266px] border-2 focus:border-customPink focus:outline-none md:hidden lg:flex"
+            className="h-10 w-[266px] border-2 focus:border-customPink focus:outline-none md:hidden lg:flex"
           />
           <button
             type="submit"
-            className="h-full w-[51px] bg-customPink text-white hover:bg-customBlue focus:outline-none"
+            className="h-10 w-[51px] bg-customPink text-white hover:bg-customBlue focus:outline-none"
           >
             <FontAwesomeIcon icon={faSearch} />
           </button>

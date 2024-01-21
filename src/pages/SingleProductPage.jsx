@@ -3,6 +3,9 @@ import { Breadcrumb } from "../components/common/Breadcrumb";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { FaRegHeart, FaArrowRight } from "react-icons/fa";
+import { CartIcon } from "../components/common/CartIcon";
+import { HeartIcon } from "../components/common/HeartIcon";
+import { MagnifyingGlassIcon } from "../components/common/MagnifyingGlassIcon";
 
 export const SingleProductPage = () => {
   const [product, setProduct] = useState({});
@@ -46,15 +49,15 @@ export const SingleProductPage = () => {
               </div>
               <p className="text-primary-dark pt-3 font-semibold">Color</p>
               <p className="pb-8 pt-3 text-[#A9ACC6]">
-                {" "}
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
                 velit eaque vero ad commodi mollitia rerum illo iusto! Autem
                 explicabo laboriosam iusto sunt optio harum voluptatibus,
                 ratione cumque? Itaque, harum?
               </p>
               <p className="font-Josefin text-primary-dark flex items-center gap-7 pl-16 pt-5">
-                {" "}
-                Add To Cart <FaRegHeart />{" "}
+                <CartIcon />
+                <HeartIcon />
+                <MagnifyingGlassIcon />
               </p>
             </div>
           </div>

@@ -9,6 +9,7 @@ import { logout } from "../../../app/slice/userSlice";
 
 const TopNavBar = () => {
   const user = useSelector((store) => store.user.value);
+  const cart = useSelector((store) => store.cart.value);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -16,7 +17,7 @@ const TopNavBar = () => {
   };
 
   return (
-    <div className="bg-[#7E33E0]">
+    <div className=" bg-[#7E33E0]">
       <div className="container hidden h-11 items-center justify-center font-josefin text-zinc-100 lg:flex lg:gap-8 xl:justify-between xl:px-1">
         <div className="flex gap-10 ">
           <span className="flex items-center gap-3">
@@ -60,7 +61,7 @@ const TopNavBar = () => {
           </div>
           {user ? (
             <>
-              cart()<span>{user.name}</span>
+              <span>{user.name}</span>
               <span onClick={handleLogout} className="flex items-center">
                 Logout
                 <RiUserLine />
@@ -79,7 +80,14 @@ const TopNavBar = () => {
             Wishlist
             <FaRegHeart />
           </div>
-          <div className="flex items-center gap-1">
+          <div className="relative flex items-center gap-1">
+            {user && (
+              <div className="flex-center absolute -right-4 -top-1 h-[16px] w-[20px] rounded-full bg-customPink">
+                <span className="font-mono text-[11px] font-bold text-white">
+                  {cart}
+                </span>
+              </div>
+            )}
             <LuShoppingCart />
           </div>
         </div>

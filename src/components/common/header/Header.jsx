@@ -1,13 +1,13 @@
 import React from "react";
-import TopNavBar from "./TopNavBar";
 import NavBar from "./NavBar";
+import TopNavBar from "./TopNavBar";
 
 const Header = () => {
   return (
-    <div>
+    <header className="sticky top-0 z-10">
       <TopNavBar />
       <NavBar />
-    </div>
+    </header>
   );
 };
 
