@@ -56,7 +56,7 @@ export const Signup = () => {
                 placeholder="Full Name"
               />
               <select name="role">
-                <option value="">select</option>
+                <option value="">select role</option>
                 <option value="buyer">buyer</option>
                 <option value="seller">seller</option>
               </select>

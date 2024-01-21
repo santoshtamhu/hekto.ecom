@@ -1,11 +1,11 @@
-import React from "react";
-import HeadingBar from "./HeadingBar";
+import React, { useState } from "react";
 import NavBar from "./NavBar";
+import TopNavBar from "./TopNavBar";
 
-const Header = () => {
+const Header = ({ user, setUser }) => {
   return (
     <div>
-      <HeadingBar />
+      <TopNavBar user={user} setUser={setUser} />
       <NavBar />
     </div>
   );

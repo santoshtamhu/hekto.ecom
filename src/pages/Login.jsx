@@ -3,7 +3,7 @@ import { Breadcrumb } from "../components/common/Breadcrumb";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,6 +16,7 @@ const Login = () => {
         // when status code in 2's line
         toast("Login successful!");
         navigate("/");
+        setUser(res.data.user);
       })
       .catch((err) => {
         toast.error("Invalid creadentails");

@@ -5,7 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { LuShoppingCart } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
-const HeadingBar = () => {
+const TopNavBar = ({ user, setUser }) => {
   return (
     <div className="bg-[#7E33E0]">
       <div className="container hidden h-11 items-center justify-center font-josefin text-zinc-100 lg:flex lg:gap-8 xl:justify-between xl:px-1">
@@ -19,6 +19,16 @@ const HeadingBar = () => {
             (12345)67890
           </span>
         </div>
+        <span
+          onClick={() => {
+            setUser({
+              name: "ram",
+            });
+          }}
+        >
+          Login {JSON.stringify(user)}
+        </span>
+
         <div className="flex gap-4">
           <div>
             <label for="languages"></label>
@@ -48,10 +58,24 @@ const HeadingBar = () => {
               </option>
             </select>
           </div>
-          <Link to="/login" className="flex items-center">
-            Login
-            <RiUserLine />
-          </Link>
+          {user ? (
+            <span
+              onClick={() => {
+                setUser(null);
+              }}
+              className="flex items-center"
+            >
+              Logout
+              <RiUserLine />
+            </span>
+          ) : (
+            <span>
+              <Link to="/login" className="flex items-center">
+                Login
+                <RiUserLine />
+              </Link>
+            </span>
+          )}
           <div className="flex items-center gap-1">
             Wishlist
             <FaRegHeart />
@@ -65,4 +89,4 @@ const HeadingBar = () => {
   );
 };
 
-export default HeadingBar;
+export default TopNavBar;
