@@ -11,8 +11,29 @@ import { SingleProductPage } from "./pages/SingleProductPage";
 import { Signup } from "./pages/Signup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { setUser } from "./app/slice/userSlice";
+import { useEffect } from "react";
+import axios from "axios";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let access_token = localStorage.getItem("access_token");
+    if (access_token) {
+      axios
+        .get("https://ecommerce-sagartmg2.vercel.app/api/users/get-user", {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        })
+        .then((res) => {
+          dispatch(setUser(res.data)); // populatate user data in redux
+        })
+        .catch((err) => {});
+    }
+  }, []);
   return (
     <div>
       <Header />

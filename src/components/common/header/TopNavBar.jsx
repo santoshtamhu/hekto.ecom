@@ -4,8 +4,17 @@ import { RiUserLine } from "react-icons/ri";
 import { FaRegHeart } from "react-icons/fa";
 import { LuShoppingCart } from "react-icons/lu";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../app/slice/userSlice";
 
-const HeadingBar = () => {
+const TopNavBar = () => {
+  const user = useSelector((store) => store.user.value);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <div className="bg-[#7E33E0]">
       <div className="container hidden h-11 items-center justify-center font-josefin text-zinc-100 lg:flex lg:gap-8 xl:justify-between xl:px-1">
@@ -19,6 +28,7 @@ const HeadingBar = () => {
             (12345)67890
           </span>
         </div>
+
         <div className="flex gap-4">
           <div>
             <label for="languages"></label>
@@ -48,10 +58,23 @@ const HeadingBar = () => {
               </option>
             </select>
           </div>
-          <Link to="/login" className="flex items-center">
-            Login
-            <RiUserLine />
-          </Link>
+          {user ? (
+            <>
+              cart()<span>{user.name}</span>
+              <span onClick={handleLogout} className="flex items-center">
+                Logout
+                <RiUserLine />
+              </span>
+            </>
+          ) : (
+            <span>
+              <Link to="/login" className="flex items-center">
+                Login
+                <RiUserLine />
+              </Link>
+            </span>
+          )}
+
           <div className="flex items-center gap-1">
             Wishlist
             <FaRegHeart />
@@ -65,4 +88,4 @@ const HeadingBar = () => {
   );
 };
 
-export default HeadingBar;
+export default TopNavBar;

@@ -9,7 +9,7 @@ export const LatestProducts = () => {
 
   const fetchApi = () => {
     axios
-      .get("https://ecommerce-sagartmg2.vercel.app/api/products?per_page=6")
+      .get("https://ecommerce-sagartmg2.vercel.app/api/products?per_page=12")
       .then((res) => {
         setProducts(res.data.products);
         setLoading(false);

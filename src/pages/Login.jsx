@@ -2,9 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Breadcrumb } from "../components/common/Breadcrumb";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setUser } from "../app/slice/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -16,6 +19,8 @@ const Login = () => {
         // when status code in 2's line
         toast("Login successful!");
         navigate("/");
+        dispatch(setUser(res.data.user));
+        localStorage.setItem("access_token", res.data.access_token);
       })
       .catch((err) => {
         toast.error("Invalid creadentails");
@@ -47,12 +52,14 @@ const Login = () => {
               <input
                 className="h-12 w-[230px] border-2 pl-3 text-sm focus:border-customPink focus:outline-none lg:w-[432px]"
                 type="email"
+                value="b@b.com"
                 name="email"
                 placeholder="Email Address"
               />
               <input
                 className="h-12 w-[230px] border-2 pl-3 text-sm focus:border-customPink focus:outline-none lg:w-[432px]"
                 type="password"
+                value="password"
                 name="password"
                 placeholder="Password"
               />

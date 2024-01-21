@@ -41,10 +41,8 @@ export const SingleProductPage = () => {
                 {product.name}
               </h1>
               <div className="flex gap-5">
-                <p className="text-primary-dark">$32.00</p>{" "}
-                <p className="text-secondary text-[16px] line-through">
-                  ${product.price}
-                </p>{" "}
+                <p className="text-primary-dark">${product.price}</p>{" "}
+                <p className="text-secondary text-[16px] line-through">$36</p>{" "}
               </div>
               <p className="text-primary-dark pt-3 font-semibold">Color</p>
               <p className="pb-8 pt-3 text-[#A9ACC6]">
