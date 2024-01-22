@@ -6,6 +6,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../app/slice/userSlice";
+import ProtectedComponent from "../ProtectedComponent";
 
 const TopNavBar = () => {
   const user = useSelector((store) => store.user.value);
@@ -76,20 +77,27 @@ const TopNavBar = () => {
             </span>
           )}
 
-          <div className="flex items-center gap-1">
-            Wishlist
-            <FaRegHeart />
-          </div>
-          <div className="relative flex items-center gap-1">
-            {user && (
-              <div className="flex-center absolute -right-4 -top-1 h-[16px] w-[20px] rounded-full bg-customPink">
-                <span className="font-mono text-[11px] font-bold text-white">
-                  {cart}
-                </span>
+          <ProtectedComponent role="buyer">
+            <div className="flex items-center gap-1">
+              Wishlist
+              <FaRegHeart />
+            </div>
+          </ProtectedComponent>
+          <ProtectedComponent role="buyer">
+            <Link to="/cart">
+              <div className="relative flex items-center gap-1">
+                <div className="flex-center absolute -right-4 -top-1 h-[16px] w-[20px] rounded-full bg-customPink">
+                  <span className="font-mono text-[11px] font-bold text-white">
+                    {cart}
+                  </span>
+                </div>
+                <LuShoppingCart />
               </div>
-            )}
-            <LuShoppingCart />
-          </div>
+            </Link>
+          </ProtectedComponent>
+          <ProtectedComponent role="seller">
+            <div>Add Products</div>
+          </ProtectedComponent>
         </div>
       </div>
     </div>

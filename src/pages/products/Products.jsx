@@ -2,9 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { HiMagnifyingGlassPlus } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import { CartIcon } from "../components/common/CartIcon";
-import { HeartIcon } from "../components/common/HeartIcon";
-import { MagnifyingGlassIcon } from "../components/common/MagnifyingGlassIcon";
+import { CartIcon } from "../../components/common/CartIcon";
+import { HeartIcon } from "../../components/common/HeartIcon";
+import { MagnifyingGlassIcon } from "../../components/common/MagnifyingGlassIcon";
 
 const Products = () => {
   const [product, setProduct] = useState([]);

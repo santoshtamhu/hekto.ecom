@@ -52,7 +52,7 @@ const Login = () => {
               <input
                 className="h-12 w-[230px] border-2 pl-3 text-sm focus:border-customPink focus:outline-none lg:w-[432px]"
                 type="email"
-                value="b@b.com"
+                // value="b@b.com"
                 name="email"
                 placeholder="Email Address"
               />
