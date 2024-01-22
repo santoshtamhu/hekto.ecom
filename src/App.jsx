@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./app/slice/userSlice";
 import { useEffect } from "react";
 import axios from "axios";
+import { cartIncrement } from "./app/slice/cartSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,11 +30,16 @@ function App() {
           },
         })
         .then((res) => {
-          dispatch(setUser(res.data)); // populatate user data in redux
+          dispatch(setUser(res.data));
         })
         .catch((err) => {});
     }
   }, []);
+
+  let cartItem = JSON.parse(localStorage.getItem("cartItem"));
+  if (cartItem) {
+    dispatch(cartIncrement({ cartItem }));
+  }
   return (
     <div>
       <Header />

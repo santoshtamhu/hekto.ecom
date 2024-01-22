@@ -6,12 +6,16 @@ export const cartSlice = createSlice({
     value: 0,
   },
   reducers: {
-    setCart: (state) => {
+    cartIncrement: (state) => {
       state.value++;
+      localStorage.setItem("cartItem", state.value);
+    },
+    cartDecrement: (state) => {
+      state.value--;
     },
   },
 });
 
-export const { setCart } = cartSlice.actions;
+export const { cartIncrement, cartDecrement } = cartSlice.actions;
 
 export default cartSlice.reducer;

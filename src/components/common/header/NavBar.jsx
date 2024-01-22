@@ -51,7 +51,12 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
-        <form className="hidden md:flex md:items-center">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          className="hidden md:flex md:items-center"
+        >
           <input
             type="text"
             className="h-10 w-[266px] border-2 focus:border-customPink focus:outline-none md:hidden lg:flex"
