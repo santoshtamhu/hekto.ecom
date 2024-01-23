@@ -17,9 +17,9 @@ import { useEffect } from "react";
 import axios from "axios";
 import { AddProduct } from "./pages/products/AddProduct";
 import { Cart } from "./pages/Cart";
-import { ProtectedRoute } from "./pages/ProtectedRoute";
+import { ProtectedRoute } from "./components/common/ProtectedRoute";
 
-function App() {
+function App({ role }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,10 +44,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="" element={<ProtectedRoute />}>
+        <Route path="" element={<ProtectedRoute role={role} />}>
           <Route path="/cart" element={<Cart />} />
         </Route>
-
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<AddProduct />} />
         <Route path="/products/:slug" element={<SingleProductPage />} />

@@ -9,6 +9,9 @@ export const cartSlice = createSlice({
     cartIncrement: (state) => {
       state.value++;
     },
+    cartDecrement: (state) => {
+      state.value--;
+    },
   },
 });
 
