@@ -6,7 +6,7 @@ import Pages from "./pages/Pages";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Shop from "./pages/Shop";
-import Login from "./pages/Login";
+import Login from "./components/common/LoginForm";
 import { SingleProductPage } from "./pages/products/SingleProductPage";
 import { Signup } from "./pages/Signup";
 import { ToastContainer } from "react-toastify";
@@ -18,6 +18,7 @@ import axios from "axios";
 import { AddProduct } from "./pages/products/AddProduct";
 import { Cart } from "./pages/Cart";
 import { ProtectedRoute } from "./components/common/ProtectedRoute";
+import { LoginPage } from "./pages/LoginPage";
 
 function App({ role }) {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function App({ role }) {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="" element={<ProtectedRoute role={role} />}>
           <Route path="/cart" element={<Cart />} />

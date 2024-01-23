@@ -8,6 +8,7 @@ export const cartSlice = createSlice({
   reducers: {
     cartIncrement: (state) => {
       state.value++;
+      console.log(state.value);
     },
     cartDecrement: (state) => {
       state.value--;
