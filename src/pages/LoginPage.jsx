@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../components/common/LoginForm";
+import LoginForm from "../components/common/LoginForm";
 import { Breadcrumb } from "../components/common/Breadcrumb";
 
 export const LoginPage = () => {
@@ -13,7 +13,7 @@ export const LoginPage = () => {
         ]}
       />
       <div className="mt-9 flex justify-center">
-        <Login />
+        <LoginForm />
       </div>
     </>
   );

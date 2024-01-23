@@ -20,7 +20,7 @@ export const SingleProductPage = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Breadcrumb
         title={product.name}
         links={[
@@ -118,6 +118,6 @@ export const SingleProductPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

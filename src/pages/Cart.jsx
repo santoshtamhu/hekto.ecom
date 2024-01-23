@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export const Cart = () => {
-  return <div>Cart</div>;
+  let cart = useSelector((store) => store.cart.value);
+  return <div>Cart({cart})</div>;
 };

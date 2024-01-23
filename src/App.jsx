@@ -6,21 +6,21 @@ import Pages from "./pages/Pages";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Shop from "./pages/Shop";
-import Login from "./components/common/LoginForm";
 import { SingleProductPage } from "./pages/products/SingleProductPage";
 import { Signup } from "./pages/Signup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { setUser } from "./app/slice/userSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { AddProduct } from "./pages/products/AddProduct";
 import { Cart } from "./pages/Cart";
 import { ProtectedRoute } from "./components/common/ProtectedRoute";
 import { LoginPage } from "./pages/LoginPage";
 
-function App({ role }) {
+function App() {
+  const [isLoading, setisLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,31 +33,43 @@ function App({ role }) {
           },
         })
         .then((res) => {
+          setisLoading(false);
           dispatch(setUser(res.data)); // populatate user data in redux
         })
         .catch((err) => {});
+      setisLoading(false);
+    } else {
+      setisLoading(false);
     }
   }, []);
   return (
-    <div>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="" element={<ProtectedRoute role={role} />}>
-          <Route path="/cart" element={<Cart />} />
-        </Route>
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/add" element={<AddProduct />} />
-        <Route path="/products/:slug" element={<SingleProductPage />} />
-        <Route path="/pages" element={<Pages />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/shop" element={<Shop />} />
-      </Routes>
-      <ToastContainer />
-    </div>
+    <>
+      {isLoading ? (
+        <div className="flex h-screen items-center justify-center">
+          <p>logo./ quotes/ spinner</p>
+        </div>
+      ) : (
+        <>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="" element={<ProtectedRoute role="buyer" />}>
+              <Route path="cart" element={<Cart />} />
+            </Route>
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/add" element={<AddProduct />} />
+            <Route path="/products/:slug" element={<SingleProductPage />} />
+            <Route path="/pages" element={<Pages />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/shop" element={<Shop />} />
+          </Routes>
+          <ToastContainer />
+        </>
+      )}
+    </>
   );
 }
 
