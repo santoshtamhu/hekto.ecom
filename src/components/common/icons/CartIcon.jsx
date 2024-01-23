@@ -2,6 +2,7 @@ import React from "react";
 import { LuShoppingCart } from "react-icons/lu";
 import { useDispatch } from "react-redux";
 import { cartIncrement } from "../../../app/slice/cartSlice";
+import ProtectedComponent from "../ProtectedComponent";
 
 export const CartIcon = () => {
   const dispatch = useDispatch();

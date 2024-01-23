@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../components/common/Breadcrumb";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { FaRegHeart, FaArrowRight } from "react-icons/fa";
-import { CartIcon } from "../../components/common/CartIcon";
-import { HeartIcon } from "../../components/common/HeartIcon";
-import { MagnifyingGlassIcon } from "../../components/common/MagnifyingGlassIcon";
+import { FaArrowRight } from "react-icons/fa";
+import { CartIcon } from "../../components/common/icons/CartIcon";
+import { HeartIcon } from "../../components/common/icons/HeartIcon";
+import { MagnifyingGlassIcon } from "../../components/common/icons/MagnifyingGlassIcon";
 
 export const SingleProductPage = () => {
   const [product, setProduct] = useState({});

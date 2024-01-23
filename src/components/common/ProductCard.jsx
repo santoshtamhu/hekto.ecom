@@ -1,11 +1,8 @@
 import React from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { LuShoppingCart } from "react-icons/lu";
-import { HiMagnifyingGlassPlus } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import { CartIcon } from "./CartIcon";
-import { HeartIcon } from "./HeartIcon";
-import { MagnifyingGlassIcon } from "./MagnifyingGlassIcon";
+import { CartIcon } from "./icons/CartIcon";
+import { HeartIcon } from "./icons/HeartIcon";
+import { MagnifyingGlassIcon } from "./icons/MagnifyingGlassIcon";
 
 export const ProductCard = ({ product }) => {
   return (
