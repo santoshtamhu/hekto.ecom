@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply mb-4 rounded bg-customPink px-4 py-2 text-white hover:bg-customBlue;
+  }
+  .container {
+    @apply mx-auto max-w-[1177px];
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .form-label {
+    @apply block text-sm font-medium capitalize text-gray-600;
+  }
+  .form-control {
+    @apply mt-1 h-full w-full border-2 p-2 pl-3 text-sm focus:border-customPink focus:outline-none;
+  }
+  .required-field {
+    @apply after:text-red-500 after:content-['_*'];
+  }
+}

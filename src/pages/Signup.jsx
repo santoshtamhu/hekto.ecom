@@ -80,7 +80,7 @@ export const Signup = () => {
               </button>
             </form>
             <div className="pt-3 text-sm text-slate-400 md:text-base">
-              Already have an account?{" "}
+              Already have an account?
               <span>
                 <Link className="hover:underline" to="/login">
                   Login!

@@ -29,8 +29,8 @@ const LoginForm = () => {
   return (
     <>
       <div className="mb-96 grid h-96 w-80 place-content-center font-lato shadow-2xl lg:h-[474px] lg:w-[544px]">
-        <div className=" text-center">
-          <p className=" mb-2 font-josefin text-2xl font-bold md:text-4xl">
+        <div className="w-[350px] text-center">
+          <p className="mb-2 font-josefin text-2xl font-bold md:text-4xl">
             Log In
           </p>
           <div className="text-sm text-slate-400">
@@ -41,14 +41,14 @@ const LoginForm = () => {
             className="mt-3 grid place-items-center gap-2 text-center"
           >
             <input
-              className="h-12 w-[230px] border-2 pl-3 text-sm focus:border-customPink focus:outline-none lg:w-[432px]"
+              className="form-control"
               type="email"
               // defaultValue="b@b.com"
               name="email"
               placeholder="Email Address"
             />
             <input
-              className="h-12 w-[230px] border-2 pl-3 text-sm focus:border-customPink focus:outline-none lg:w-[432px]"
+              className="form-control"
               type="password"
               defaultValue="password"
               name="password"
@@ -57,15 +57,12 @@ const LoginForm = () => {
             <p className="text-sm text-slate-400 md:text-base">
               Forgot your password?
             </p>
-            <button
-              type="submit"
-              className="h-[47px] w-[230px] bg-customPink pb-1 text-white hover:bg-customBlue focus:outline-none lg:w-[432px] lg:font-bold"
-            >
+            <button type="submit" className="btn mt-5 h-full w-full">
               Log In
             </button>
           </form>
           <div className="pt-3 text-sm text-slate-400 md:text-base">
-            Don't have an account?{" "}
+            Don't have an account?
             <span>
               <Link className="hover:underline" to="/signup">
                 Create an account!
