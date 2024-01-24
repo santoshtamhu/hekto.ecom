@@ -20,8 +20,8 @@ import { ProtectedRoute } from "./components/common/ProtectedRoute";
 import { LoginPage } from "./pages/LoginPage";
 
 function App() {
-  const [isLoading, setisLoading] = useState(true);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let access_token = localStorage.getItem("access_token");
@@ -33,13 +33,14 @@ function App() {
           },
         })
         .then((res) => {
-          setisLoading(false);
-          dispatch(setUser(res.data)); // populatate user data in redux
+          dispatch(setUser(res.data));
+          setIsLoading(false);
         })
-        .catch((err) => {});
-      setisLoading(false);
+        .catch((err) => {
+          setIsLoading(false);
+        });
     } else {
-      setisLoading(false);
+      setIsLoading(false);
     }
   }, []);
   return (
@@ -59,7 +60,9 @@ function App() {
               <Route path="cart" element={<Cart />} />
             </Route>
             <Route path="/products" element={<Products />} />
-            <Route path="/products/add" element={<AddProduct />} />
+            <Route path="" element={<ProtectedRoute role="seller" />}>
+              <Route path="/products/add" element={<AddProduct />} />
+            </Route>
             <Route path="/products/:slug" element={<SingleProductPage />} />
             <Route path="/pages" element={<Pages />} />
             <Route path="/contact" element={<Contact />} />
