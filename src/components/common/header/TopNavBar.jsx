@@ -96,9 +96,10 @@ const TopNavBar = () => {
             </Link>
           </ProtectedComponent>
           <ProtectedComponent role="seller">
-            <Link to="/products/add">
-              <div>Add Products</div>
-            </Link>
+            <Link to="products/add">Add Products</Link>
+          </ProtectedComponent>
+          <ProtectedComponent role="seller">
+            <Link to="products/my-products">My Products</Link>
           </ProtectedComponent>
         </div>
       </div>

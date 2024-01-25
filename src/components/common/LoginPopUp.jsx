@@ -4,11 +4,8 @@ import LoginForm from "./LoginForm";
 export const LoginPopUp = ({ onClose }) => {
   return (
     <>
-      <div
-        onClick={onClose}
-        className="fixed left-1/2 top-1/2 z-20 flex h-full w-full -translate-x-1/2 -translate-y-1/2 transform items-center justify-center bg-transparent"
-      >
-        <div className="h-[474px] bg-white">
+      <div className="fixed left-1/2 top-1/2 z-20 flex h-full w-full -translate-x-1/2 -translate-y-1/2 transform items-center justify-center bg-transparent">
+        <div className=" h-[474px] bg-white">
           <div className="relative ">
             <LoginForm />
             <button

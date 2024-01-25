@@ -18,6 +18,7 @@ import { AddProduct } from "./pages/products/AddProduct";
 import { Cart } from "./pages/Cart";
 import { ProtectedRoute } from "./components/common/ProtectedRoute";
 import { LoginPage } from "./pages/LoginPage";
+import { SellerProducts } from "./pages/products/SellerProducts";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,10 +60,11 @@ function App() {
             <Route path="" element={<ProtectedRoute role="buyer" />}>
               <Route path="cart" element={<Cart />} />
             </Route>
-            <Route path="/products" element={<Products />} />
-            <Route path="" element={<ProtectedRoute role="seller" />}>
-              <Route path="/products/add" element={<AddProduct />} />
+            <Route path="/products" element={<ProtectedRoute role="seller" />}>
+              <Route path="add" element={<AddProduct />} />
+              <Route path="my-products" element={<SellerProducts />} />
             </Route>
+            <Route path="/products" element={<Products />} />
             <Route path="/products/:slug" element={<SingleProductPage />} />
             <Route path="/pages" element={<Pages />} />
             <Route path="/contact" element={<Contact />} />
