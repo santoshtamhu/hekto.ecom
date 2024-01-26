@@ -1,8 +1,25 @@
+import { useEffect, useState } from "react";
 import { Breadcrumb } from "../../components/common/Breadcrumb";
 
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { API_URL } from "../../components/common/constants/domian";
 
 export const SellerProducts = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    let access_token = localStorage.getItem("access_token");
+
+    axios
+      .get(`${API_URL}/products?sellerproducts`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+      .then((res) => {
+        setProducts(res.data.products);
+      });
+  }, []);
   return (
     <>
       <Breadcrumb
@@ -24,17 +41,23 @@ export const SellerProducts = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="text-center">
-              <td class="border-b px-4 py-2">Nike Chair</td>
-              <td class="border-b px-4 py-2">25</td>
-              <td class="border-b px-4 py-2">200</td>
-              <td class=" flex justify-center gap-4 border-b px-4 py-2 text-center">
-                <Link>
-                  <span>Edit</span>
-                </Link>
-                <button>Delete</button>
-              </td>
-            </tr>
+            {products.map((product) => {
+              return (
+                <>
+                  <tr className="text-center">
+                    <td class="border-b px-4 py-2">{product.name}</td>
+                    <td class="border-b px-4 py-2">{product.price}</td>
+                    <td class="border-b px-4 py-2">{product.in_stock}</td>
+                    <td class=" flex justify-center gap-4 border-b px-4 py-2 text-center">
+                      <Link to={`/products/my-products/edit/${product._id}`}>
+                        <span>Edit</span>
+                      </Link>
+                      <button>Delete</button>
+                    </td>
+                  </tr>
+                </>
+              );
+            })}
           </tbody>
         </table>
       </div>

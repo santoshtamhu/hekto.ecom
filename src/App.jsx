@@ -14,11 +14,12 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./app/slice/userSlice";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { AddProduct } from "./pages/products/AddProduct";
 import { Cart } from "./pages/Cart";
 import { ProtectedRoute } from "./components/common/ProtectedRoute";
 import { LoginPage } from "./pages/LoginPage";
 import { SellerProducts } from "./pages/products/SellerProducts";
+import { API_URL } from "./components/common/constants/domian";
+import { UpsertProduct } from "./pages/products/UpsertProduct";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
     let access_token = localStorage.getItem("access_token");
     if (access_token) {
       axios
-        .get("https://ecommerce-sagartmg2.vercel.app/api/users/get-user", {
+        .get(`${API_URL}/users/get-user`, {
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
@@ -60,11 +61,12 @@ function App() {
             <Route path="" element={<ProtectedRoute role="buyer" />}>
               <Route path="cart" element={<Cart />} />
             </Route>
+            <Route path="/products" element={<Products />} />
             <Route path="/products" element={<ProtectedRoute role="seller" />}>
-              <Route path="add" element={<AddProduct />} />
+              <Route path="add" element={<UpsertProduct />} />
+              <Route path="my-products/edit/:_id" element={<UpsertProduct />} />
               <Route path="my-products" element={<SellerProducts />} />
             </Route>
-            <Route path="/products" element={<Products />} />
             <Route path="/products/:slug" element={<SingleProductPage />} />
             <Route path="/pages" element={<Pages />} />
             <Route path="/contact" element={<Contact />} />

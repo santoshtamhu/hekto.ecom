@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../app/slice/userSlice";
+import { API_URL } from "./constants/domian";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const LoginForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("https://ecommerce-sagartmg2.vercel.app/api/users/login", {
+      .post(`${API_URL}/users/login`, {
         email: event.target.email.value,
         password: event.target.password.value,
       })

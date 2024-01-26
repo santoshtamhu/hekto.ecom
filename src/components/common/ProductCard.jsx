@@ -33,7 +33,7 @@ export const ProductCard = ({ product }) => {
             <div className="h-1 w-3.5 rounded-lg bg-customBlue group-hover:bg-orange-200"></div>
           </div>
           <p className="mt-2 font-josefin text-[14px] text-customBlue group-hover:text-white">
-            Code: {product.code}
+            In Stock: {product.in_stock}
           </p>
           <p className="mt-1 font-lato text-[14px] text-customBlue group-hover:text-white">
             ${product.price}.00

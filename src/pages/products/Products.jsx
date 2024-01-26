@@ -4,16 +4,15 @@ import { Link } from "react-router-dom";
 import { CartIcon } from "../../components/common/icons/CartIcon";
 import { HeartIcon } from "../../components/common/icons/HeartIcon";
 import { MagnifyingGlassIcon } from "../../components/common/icons/MagnifyingGlassIcon";
+import { API_URL } from "../../components/common/constants/domian";
 
 const Products = () => {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://ecommerce-sagartmg2.vercel.app/api/products")
-      .then((res) => {
-        setProduct(res.data.products);
-      });
+    axios.get(`${API_URL}/products`).then((res) => {
+      setProduct(res.data.products);
+    });
   }, []);
 
   return (
