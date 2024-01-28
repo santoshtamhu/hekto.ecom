@@ -12,7 +12,7 @@ export const UpsertProduct = () => {
     price: "",
     description: "",
     in_stock: "",
-    categories: ["cat-1", ""],
+    categories: [""],
   };
   const [data, setData] = useState(initialValue);
   const [isSubmitting, setisSubmitting] = useState(false);
@@ -36,7 +36,7 @@ export const UpsertProduct = () => {
     let access_token = localStorage.getItem("access_token");
     setisSubmitting(true);
     axios
-      .post(`${API_URL}products`, productData, {
+      .post(`${API_URL}/products`, productData, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
@@ -56,6 +56,27 @@ export const UpsertProduct = () => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const addCategory = () => {
+    setData({
+      ...data,
+      categories: [...data.categories, ""],
+    });
+  };
+
+  const handleCategoryChange = (e, index) => {
+    let temp = data.categories.map((el, idx) => {
+      if (index == idx) {
+        return e.target.value;
+      } else {
+        return el;
+      }
+    });
+    setData({
+      ...data,
+      categories: temp,
     });
   };
   return (
@@ -91,6 +112,7 @@ export const UpsertProduct = () => {
               onChange={handleChange}
               type="text"
               id="name"
+              placeholder="Name"
               name="name"
               className="form-control "
               required
@@ -106,6 +128,7 @@ export const UpsertProduct = () => {
               onChange={handleChange}
               type="number"
               id="price"
+              placeholder="Price"
               name="price"
               className="form-control"
               required
@@ -124,6 +147,31 @@ export const UpsertProduct = () => {
               name="in_stock"
               className="form-control"
             />
+          </div>
+          <div>
+            <label htmlFor="categories" className=" form-label">
+              Categories
+              <button onClick={addCategory} type="button" className="btn ml-2">
+                Add
+              </button>
+            </label>
+            {data.categories.map((e, index) => {
+              return (
+                <div className="mt-2 flex items-center gap-2">
+                  <input
+                    value={e}
+                    onChange={(e) => handleCategoryChange(e, index)}
+                    type="string"
+                    id="category"
+                    name="category"
+                    className="form-control"
+                  />
+                  <button type="button" className="btn">
+                    Delete
+                  </button>
+                </div>
+              );
+            })}
           </div>
 
           <div>
