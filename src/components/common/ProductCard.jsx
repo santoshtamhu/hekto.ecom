@@ -9,7 +9,7 @@ export const ProductCard = ({ product }) => {
     <li className="group relative flex h-[361px] w-[270px] justify-center pr-0 shadow-lg">
       <div>
         <div className="absolute left-2 top-2 hidden gap-2 group-hover:flex">
-          <CartIcon />
+          <CartIcon product={product} />
           <HeartIcon />
           <MagnifyingGlassIcon />
         </div>

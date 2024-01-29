@@ -1,18 +1,18 @@
 import { LuShoppingCart } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
-import { cartIncrement } from "../../../app/slice/cartSlice";
+import { addToCart } from "../../../app/slice/cartSlice";
 import { toast } from "react-toastify";
 import { LoginPopUp } from "../LoginPopUp";
 import { useState } from "react";
 
-export const CartIcon = () => {
+export const CartIcon = ({ product }) => {
   const user = useSelector((store) => store.user.value);
   const [loginPopup, setLoginPopup] = useState(false);
-
   const dispatch = useDispatch();
-  const handleCart = () => {
+  const handleCart = (e) => {
     if (user?.role == "buyer") {
-      dispatch(cartIncrement());
+      dispatch(addToCart(product));
+      // dispatch(cartIncrement());
     } else if (user?.role == "seller") {
       toast("login as a buyer to add item to cart!");
     } else {

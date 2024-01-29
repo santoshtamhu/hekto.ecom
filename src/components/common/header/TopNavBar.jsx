@@ -91,6 +91,7 @@ const TopNavBar = () => {
                     {cart}
                   </span>
                 </div>
+
                 <LuShoppingCart />
               </div>
             </Link>

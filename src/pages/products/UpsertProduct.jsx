@@ -61,9 +61,12 @@ export const UpsertProduct = () => {
     })
       .then((res) => {
         setisSubmitting(false);
-
-        toast("product created.");
-        setData(initialValue);
+        if (!_id) {
+          toast("product created.");
+          setData(initialValue);
+        } else {
+          toast("product updated.");
+        }
       })
       .catch((err) => {
         setisSubmitting(false);
@@ -262,7 +265,7 @@ export const UpsertProduct = () => {
             disabled={isSubmitting}
             className="btn w-full disabled:cursor-no-drop disabled:opacity-50 "
           >
-            {isSubmitting ? "loading..." : _id ? "Submit" : "Add Product"}
+            {isSubmitting ? "loading..." : _id ? "Edit" : "Add Product"}
           </button>
         </form>
       </div>
