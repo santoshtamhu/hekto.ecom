@@ -13,9 +13,11 @@ export const UpsertProduct = () => {
     description: "",
     in_stock: "",
     categories: [""],
+    image: "",
   };
   const [data, setData] = useState(initialValue);
   const [isSubmitting, setisSubmitting] = useState(false);
+  const [validationError, setValidationError] = useState({});
 
   useEffect(() => {
     if (_id) {
@@ -32,30 +34,62 @@ export const UpsertProduct = () => {
   console.log(_id);
   const handleSubmit = (e) => {
     e.preventDefault();
-    let productData = data;
     let access_token = localStorage.getItem("access_token");
+
+    let formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("price", data.price);
+    formData.append("description", data.description);
+    formData.append("image", data.image);
+    data.categories.forEach((cat) => {
+      formData.append("categories", cat);
+    });
+
     setisSubmitting(true);
-    axios
-      .post(`${API_URL}/products`, productData, {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      })
+
+    let url = `${API_URL}/products`;
+    let method = "post";
+
+    if (_id) {
+      method = "put";
+      url = `${API_URL}/products/${_id}`;
+    }
+    axios[method](url, formData, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    })
       .then((res) => {
         setisSubmitting(false);
+
         toast("product created.");
         setData(initialValue);
       })
       .catch((err) => {
         setisSubmitting(false);
-        toast.error("something went wrong");
+        if (err.response?.status == 400) {
+          let errObj = {};
+          err.response.data.errors.forEach((el) => {
+            errObj[el.param] = el.msg;
+          });
+          setValidationError(errObj);
+          console.log(errObj);
+        } else {
+          toast.error("something went wrong");
+        }
       });
   };
 
   const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
     setData({
       ...data,
-      [e.target.name]: e.target.value,
+      [name]: type === "file" ? files[0] : value,
+    });
+
+    setValidationError({
+      ...validationError,
+      [name]: "",
     });
   };
 
@@ -79,6 +113,16 @@ export const UpsertProduct = () => {
       categories: temp,
     });
   };
+
+  const handleCategoryDelete = (index) => {
+    let temp = [...data.categories];
+    temp.splice(index, 1);
+    setData({
+      ...data,
+      categories: temp,
+    });
+  };
+
   return (
     <>
       {_id ? (
@@ -115,8 +159,12 @@ export const UpsertProduct = () => {
               placeholder="Name"
               name="name"
               className="form-control "
-              required
             />
+            {validationError.name && (
+              <span className="text-sm text-red-500">
+                {validationError.name}
+              </span>
+            )}
           </div>
 
           <div>
@@ -131,8 +179,12 @@ export const UpsertProduct = () => {
               placeholder="Price"
               name="price"
               className="form-control"
-              required
             />
+            {validationError.price && (
+              <span className="text-sm text-red-500">
+                {validationError.price}
+              </span>
+            )}
           </div>
 
           <div>
@@ -166,7 +218,13 @@ export const UpsertProduct = () => {
                     name="category"
                     className="form-control"
                   />
-                  <button type="button" className="btn">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handleCategoryDelete(index);
+                    }}
+                    className="btn"
+                  >
                     Delete
                   </button>
                 </div>
@@ -174,6 +232,18 @@ export const UpsertProduct = () => {
             })}
           </div>
 
+          <div>
+            <label htmlFor="description" className="form-label">
+              Image
+            </label>
+            <input
+              onChange={handleChange}
+              id="image"
+              name="image"
+              type="file"
+              className="form-control"
+            />
+          </div>
           <div>
             <label htmlFor="description" className="form-label">
               Description
@@ -184,8 +254,8 @@ export const UpsertProduct = () => {
               id="description"
               name="description"
               rows="5"
+              type="string"
               className="form-control"
-              required
             ></textarea>
           </div>
           <button
