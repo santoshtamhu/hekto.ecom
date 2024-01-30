@@ -6,6 +6,10 @@ export const cartSlice = createSlice({
     value: [],
   },
   reducers: {
+    setCart: (state, action) => {
+      state.value = action.payload;
+    },
+
     addToCart: (state, action) => {
       let product = action.payload;
       let temp = [...state.value];
@@ -21,11 +25,12 @@ export const cartSlice = createSlice({
         temp.push({ ...product, quantity: 1 });
       }
       state.value = temp;
-      console.log(temp);
+
+      localStorage.setItem("cart_items", JSON.stringify(state.value));
     },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { setCart, addToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

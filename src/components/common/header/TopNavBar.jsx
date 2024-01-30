@@ -88,7 +88,7 @@ const TopNavBar = () => {
               <div className="relative flex items-center gap-1">
                 <div className="flex-center absolute -right-4 -top-1 h-[16px] w-[20px] rounded-full bg-customPink">
                   <span className="font-mono text-[11px] font-bold text-white">
-                    {cart}
+                    {cart.length}
                   </span>
                 </div>
 

@@ -20,6 +20,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { SellerProducts } from "./pages/products/SellerProducts";
 import { API_URL } from "./components/common/constants/domian";
 import { UpsertProduct } from "./pages/products/UpsertProduct";
+import { setCart } from "./app/slice/cartSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +45,13 @@ function App() {
     } else {
       setIsLoading(false);
     }
+    let cartItems = JSON.parse(localStorage.getItem("cart_items"));
+
+    if (cartItems) {
+      dispatch(setCart(cartItems));
+    }
   }, []);
+
   return (
     <>
       {isLoading ? (

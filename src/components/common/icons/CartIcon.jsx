@@ -14,7 +14,7 @@ export const CartIcon = ({ product }) => {
       dispatch(addToCart(product));
       // dispatch(cartIncrement());
     } else if (user?.role == "seller") {
-      toast("login as a buyer to add item to cart!");
+      toast.error("login as a buyer first!");
     } else {
       dispatch(setLoginPopup(true));
     }

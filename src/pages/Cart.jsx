@@ -3,6 +3,7 @@ import { Breadcrumb } from "../components/common/Breadcrumb";
 
 export const Cart = () => {
   let cartItems = useSelector((store) => store.cart.value);
+  console.log("cartitems", cartItems);
   return (
     <>
       <Breadcrumb
@@ -22,16 +23,14 @@ export const Cart = () => {
           </tr>
         </thead>
         <tbody>
-          {cartItems.map((items) => {
+          {cartItems.map((item) => {
             return (
               <>
                 <tr className="text-center">
-                  <td class="border-b px-4 py-2">{items.name}</td>
-                  <td class="border-b px-4 py-2">{items.price}</td>
-                  <td class="border-b px-4 py-2">{items.in_stock}</td>
-                  <td class=" flex justify-center gap-4 border-b px-4 py-2 text-center">
-                    {items.quantity}
-                  </td>
+                  <td class="border-b px-4 py-2">{item.name}</td>
+                  <td class="border-b px-4 py-2">{item.price}</td>
+                  <td class="border-b px-4 py-2">{item.in_stock}</td>
+                  <td class="border-b px-4 py-2">{item.quantity}</td>
                 </tr>
               </>
             );
