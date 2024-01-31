@@ -28,9 +28,27 @@ export const cartSlice = createSlice({
 
       localStorage.setItem("cart_items", JSON.stringify(state.value));
     },
+
+    decrement: (state, action) => {
+      let product = action.payload;
+      let temp = [...state.value];
+
+      temp = temp.map((el) => {
+        if (el._id == product._id) {
+          return { ...el, quantity: el.quantity - 1 };
+        }
+        return el;
+      });
+
+      temp = temp.filter((el) => el.quantity > 0);
+
+      state.value = temp;
+
+      localStorage.setItem("cart_items", JSON.stringify(state.value));
+    },
   },
 });
 
-export const { setCart, addToCart } = cartSlice.actions;
+export const { setCart, addToCart, decrement } = cartSlice.actions;
 
 export default cartSlice.reducer;

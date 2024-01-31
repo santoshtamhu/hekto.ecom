@@ -1,7 +1,9 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Breadcrumb } from "../components/common/Breadcrumb";
+import { addToCart, decrement } from "../app/slice/cartSlice";
 
 export const Cart = () => {
+  const dispatch = useDispatch();
   let cartItems = useSelector((store) => store.cart.value);
   console.log("cartitems", cartItems);
   return (
@@ -30,7 +32,27 @@ export const Cart = () => {
                   <td class="border-b px-4 py-2">{item.name}</td>
                   <td class="border-b px-4 py-2">{item.price}</td>
                   <td class="border-b px-4 py-2">{item.in_stock}</td>
-                  <td class="border-b px-4 py-2">{item.quantity}</td>
+                  <td class="flex justify-center gap-3 border-b px-4 py-2">
+                    <button
+                      onClick={() => {
+                        dispatch(decrement(item));
+                      }}
+                      className="btn h-7 w-7 p-0"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      onClick={() => {
+                        dispatch(addToCart(item));
+                      }}
+                      className="btn h-7 w-7 p-0"
+                      type="button"
+                    >
+                      +
+                    </button>
+                  </td>
                 </tr>
               </>
             );
