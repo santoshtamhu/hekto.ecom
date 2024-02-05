@@ -6,11 +6,12 @@ import { FaArrowRight } from "react-icons/fa";
 import { CartIcon } from "../../components/common/icons/CartIcon";
 import { HeartIcon } from "../../components/common/icons/HeartIcon";
 import { MagnifyingGlassIcon } from "../../components/common/icons/MagnifyingGlassIcon";
+import { useAuthenticate } from "../../hooks/useAuthenticate";
 
 export const SingleProductPage = () => {
   const [product, setProduct] = useState({});
   const { slug } = useParams();
-
+  const authenticate = useAuthenticate();
   useEffect(() => {
     axios
       .get("https://ecommerce-sagartmg2.vercel.app/api/products/" + slug)
@@ -19,6 +20,18 @@ export const SingleProductPage = () => {
       });
   }, []);
 
+  const addReview = (data) => {
+    alert("review added.");
+    axios.put(
+      "https://ecommerce-sagartmg2.vercel.app/api/products/review/" + slug,
+      data,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      },
+    );
+  };
   return (
     <>
       <Breadcrumb
@@ -54,19 +67,44 @@ export const SingleProductPage = () => {
                 explicabo laboriosam iusto sunt optio harum voluptatibus,
                 ratione cumque? Itaque, harum?
               </p>
-              <p className="font-Josefin text-primary-dark flex items-center gap-7 pl-16 pt-5">
+              <span className="font-Josefin text-primary-dark flex items-center gap-7 pl-16 pt-5">
                 <CartIcon />
                 <HeartIcon />
                 <MagnifyingGlassIcon />
-              </p>
+              </span>
             </div>
           </div>
         </div>
       </div>
 
       <div className="mb-32 h-[500px] bg-[#F9F8FE]">
+        <div className="container pt-16">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+
+              // if (user) {
+              // addReview({rating:e.target.rating.value})
+              //   alert("add review");
+              // } else {
+              //   toast.error("login requried.");
+              // }
+
+              authenticate(() => {
+                addReview({
+                  rating: e.target.rating.value,
+                  comment: e.target.comment.value,
+                });
+              });
+            }}
+          >
+            <input name="rating" type="text" className="border px-4 py-2" />
+            <input name="comment" type="text" className="border px-4 py-2" />
+            <button className="btn">Add Review</button>
+          </form>
+        </div>
         <div className="container">
-          <div className="font-Josefin flex gap-20 pt-24 text-xl font-semibold text-[#151875]">
+          <div className="font-Josefin flex gap-20 pt-16 text-xl font-semibold text-[#151875]">
             <p className="hover:underline">Description</p>
             <p className="hover:underline">Additional Info</p>
             <p className="hover:underline">Reviews</p>

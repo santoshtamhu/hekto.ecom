@@ -16,7 +16,7 @@ export const CartIcon = ({ product }) => {
     } else if (user?.role == "seller") {
       toast.error("login as a buyer first!");
     } else {
-      dispatch(setLoginPopup(true));
+      setLoginPopup(true);
     }
   };
   return (
