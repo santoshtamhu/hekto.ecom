@@ -2,10 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
@@ -51,9 +52,16 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
-        <form className="hidden md:flex md:items-center">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            navigate("/products?searchTerm=" + e.target.searchTerm.value);
+          }}
+          className="hidden md:flex md:items-center"
+        >
           <input
             type="text"
+            name="searchTerm"
             className="h-10 w-[266px] border-2 focus:border-customPink focus:outline-none md:hidden lg:flex"
           />
           <button

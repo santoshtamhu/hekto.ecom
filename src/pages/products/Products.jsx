@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { CartIcon } from "../../components/common/icons/CartIcon";
 import { HeartIcon } from "../../components/common/icons/HeartIcon";
 import { MagnifyingGlassIcon } from "../../components/common/icons/MagnifyingGlassIcon";
@@ -8,12 +8,19 @@ import { API_URL } from "../../components/common/constants/domian";
 
 const Products = () => {
   const [product, setProduct] = useState([]);
+  let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    axios.get(`${API_URL}/products`).then((res) => {
-      setProduct(res.data.products);
-    });
-  }, []);
+    let searchTerm = searchParams.get("searchTerm") || "";
+    axios
+      .get(`${API_URL}/products?search_term=${searchTerm}`)
+      .then((res) => {
+        setProduct(res.data.products);
+      })
+      .catch((err) => {
+        console.log("error");
+      });
+  }, [searchParams]);
 
   return (
     <>

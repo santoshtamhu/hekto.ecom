@@ -7,6 +7,7 @@ import { CartIcon } from "../../components/common/icons/CartIcon";
 import { HeartIcon } from "../../components/common/icons/HeartIcon";
 import { MagnifyingGlassIcon } from "../../components/common/icons/MagnifyingGlassIcon";
 import { useAuthenticate } from "../../hooks/useAuthenticate";
+import { toast } from "react-toastify";
 
 export const SingleProductPage = () => {
   const [product, setProduct] = useState({});
@@ -21,7 +22,7 @@ export const SingleProductPage = () => {
   }, []);
 
   const addReview = (data) => {
-    alert("review added.");
+    toast("review added.");
     axios.put(
       "https://ecommerce-sagartmg2.vercel.app/api/products/review/" + slug,
       data,
