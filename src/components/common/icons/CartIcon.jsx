@@ -20,7 +20,7 @@ export const CartIcon = ({ product }) => {
     }
   };
   return (
-    <div className="flex-center h-[30px] w-[30px] rounded-full hover:bg-[#EEEFFB]">
+    <div className="flex-center h-[30px] w-[30px] rounded-full shadow-md hover:bg-[#EEEFFB]">
       <button type="button " onClick={handleCart}>
         <LuShoppingCart className="text-[#2F1AC4]" />
       </button>

@@ -1,13 +1,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import { CartIcon } from "../../components/common/icons/CartIcon";
-import { HeartIcon } from "../../components/common/icons/HeartIcon";
-import { MagnifyingGlassIcon } from "../../components/common/icons/MagnifyingGlassIcon";
+import { useSearchParams } from "react-router-dom";
 import { API_URL } from "../../components/common/constants/domian";
+import { Breadcrumb } from "../../components/common/Breadcrumb";
+import { GridView } from "./GridView";
+import { ListView } from "./ListView";
+import { IoGrid } from "react-icons/io5";
+import { FaListUl } from "react-icons/fa";
 
 const Products = () => {
   const [product, setProduct] = useState([]);
+  const [viewToggle, setViewToggle] = useState(true);
   let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -24,38 +27,38 @@ const Products = () => {
 
   return (
     <>
-      <div className="container mt-28">
-        {product.map((e) => {
-          return (
-            <div className="mb-7 h-[230px] w-[921px] shadow">
-              <div className="flex gap-[29px] p-[18px]">
-                <img className="h-48 w-72" src={e.image} alt="" />
-                <div>
-                  <Link to={`/products/${e._id}`}>
-                    <span className="flex items-center gap-[67px] font-josefin text-[18px] font-bold text-customBlue">
-                      {e.name}
-                      <div class="h-2.5 w-2.5 rounded-full bg-orange-400"></div>
-                    </span>
-                  </Link>
-
-                  <div class="font-josefin text-sm font-normal text-customBlue">
-                    $26.00
-                  </div>
-                  <div class="w-96 font-lato text-base font-normal leading-7 text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Magna in est adipiscing in phasellus non in justo.
-                  </div>
-                  <div className="group-hover flex gap-[31px]">
-                    <CartIcon />
-                    <HeartIcon />
-                    <MagnifyingGlassIcon />
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+      <div>
+        <Breadcrumb
+          title="Products"
+          links={[
+            { title: "Home", url: "/" },
+            { title: "Products", url: "" },
+          ]}
+        />
       </div>
+      <div>
+        view:{" "}
+        <button
+          onClick={() => {
+            setViewToggle(true);
+          }}
+        >
+          <FaListUl />
+        </button>
+        <button
+          onClick={() => {
+            setViewToggle(false);
+          }}
+        >
+          <IoGrid />
+        </button>
+      </div>
+
+      {viewToggle ? (
+        <ListView product={product} />
+      ) : (
+        <GridView product={product} />
+      )}
     </>
   );
 };
